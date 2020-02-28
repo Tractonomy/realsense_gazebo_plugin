@@ -3,11 +3,11 @@
 
 #include "realsense_gazebo_plugin/RealSensePlugin.h"
 
-#include <ros/ros.h>
-#include <sensor_msgs/CameraInfo.h>
-#include <sensor_msgs/Image.h>
-#include <sensor_msgs/PointCloud2.h>
-#include <sensor_msgs/image_encodings.h>
+#include <rclcpp/rclcpp.hpp>
+#include <sensor_msgs/msg/camera_info.hpp>
+#include <sensor_msgs/msg/image.hpp>
+#include <sensor_msgs/msg/point_cloud2.hpp>
+#include <sensor_msgs/image_encodings.hpp>
 
 #include <camera_info_manager/camera_info_manager.h>
 #include <image_transport/image_transport.h>
@@ -36,7 +36,7 @@ public:
   virtual void OnNewDepthFrame();
 
   /// \brief Helper function to fill the pointcloud information
-  bool FillPointCloudHelper(sensor_msgs::PointCloud2 &point_cloud_msg, uint32_t rows_arg,
+  bool FillPointCloudHelper(sensor_msgs::msg::PointCloud2 &point_cloud_msg, uint32_t rows_arg,
                             uint32_t cols_arg, uint32_t step_arg, void *data_arg);
 
   /// \brief Callback that publishes a received Camera Frame as an
@@ -52,19 +52,19 @@ protected:
   /// \brief A pointer to the ROS node.
   ///  A node will be instantiated if it does not exist.
 protected:
-  ros::NodeHandle *rosnode_;
+  std::shared_ptr<rclcpp::Node> rosnode_;
 
 private:
   image_transport::ImageTransport *itnode_;
-  ros::Publisher pointcloud_pub_;
+  std::shared_ptr<rclcpp::Publisher<sensor_msgs::msg::PointCloud2>> pointcloud_pub_;
 
 protected:
   image_transport::CameraPublisher color_pub_, ir1_pub_, ir2_pub_, depth_pub_;
 
   /// \brief ROS image messages
 protected:
-  sensor_msgs::Image image_msg_, depth_msg_;
-  sensor_msgs::PointCloud2 pointcloud_msg_;
+  sensor_msgs::msg::Image image_msg_, depth_msg_;
+  sensor_msgs::msg::PointCloud2 pointcloud_msg_;
 };
 }
 #endif /* _GAZEBO_ROS_REALSENSE_PLUGIN_ */
