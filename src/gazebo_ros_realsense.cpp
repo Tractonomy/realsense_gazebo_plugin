@@ -15,6 +15,8 @@ GZ_REGISTER_MODEL_PLUGIN(GazeboRosRealsense)
 GazeboRosRealsense::GazeboRosRealsense() {}
 
 GazeboRosRealsense::~GazeboRosRealsense() {
+  this->pointcloud_pub_ = nullptr;
+  this->rosnode_ = nullptr;
   RCLCPP_DEBUG(rclcpp::get_logger("gazebo_ros_realsense"), "realsense_camera Unloaded");
 }
 
