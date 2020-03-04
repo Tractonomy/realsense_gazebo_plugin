@@ -24,11 +24,10 @@ aluminum peripherial evaluation case.
 
     <link name="camera_link">
       <visual>
-      <origin xyz="0.0149 -0.0175 0" rpy="1.570796327 0 1.570796327"/>
+        <origin xyz="0.0149 -0.0175 0" rpy="1.570796327 0 1.570796327"/>
         <geometry>
           <!-- <box size="0.090 0.025 0.02505"/> -->
           <mesh filename="package://realsense_gazebo_plugin/meshes/d435.dae" />
-          <!--<mesh filename="package://realsense_gazebo_plugin/meshes/d435/d435.dae" />-->
         </geometry>
         <material name="camera_aluminum"/>
       </visual>
