@@ -1,2 +1,0 @@
-ament_prepend_unique_value GAZEBO_MODEL_PATH "$AMENT_CURRENT_PREFIX/share/"
-ament_prepend_unique_value GAZEBO_PLUGIN_PATH "$AMENT_CURRENT_PREFIX/lib"
